@@ -51,6 +51,7 @@ class IsortCommand(sublime_plugin.TextCommand):
         settings = self.get_settings()
         sorted_imports = SortImports(
             file_contents=this_contents,
+            settings_path=this_view.file_name(),
             **settings
         ).output
         this_view.replace(edit, self.get_region(this_view), sorted_imports)
